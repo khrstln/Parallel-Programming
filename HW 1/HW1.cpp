@@ -28,6 +28,16 @@ void sse(float* a, float* b, int N)
 
 }
 
+float inner1(float *x, float *y, int N)
+{
+    float s;
+    int i;
+    s = 0;
+    for(i = 0; i < N; i++)
+    s += x[i] * y[i];
+    return s;
+}
+
 
 
 int main()
@@ -59,6 +69,21 @@ int main()
     {
         std::cout << res_sse[i] << " ";
     }
+
+    std::cout << std::endl;
+
+    float x[N];
+    float y[N];
+    for (int i = 0; i < N; i++)
+    {
+        x[i] = i;
+        y[i] = i*i;
+    }
+
+    float inner_ord = inner1(x, y, N);
+
+    std::cout << "Ordinnary inner product: " << std::endl << inner_ord << " ";
+    std::cout << std::endl;
 
     return 0;
 }
